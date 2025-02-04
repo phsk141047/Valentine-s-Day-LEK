@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form - Valentine Theme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap" rel="stylesheet">
+   
+    <style>
+         
+         *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+            font-family: "Anton", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        body 
+        
+        {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffcccc, #ff99cc);
+            color: white;
+            position: relative;
+        }
+        .next-stories-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            color: #ffcccc;
+        }
+        .next-stories-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            overflow: hidden;
+            
+        }
+        
+        .stories-container {
+            display: flex;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            padding: 10px 0;
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+
+        .story {
+            font-size: 18px;
+            color: rgb(96, 59, 59);
+            margin: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInStory 1.5s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 200px; /* Set a minimum width for each story */
+        }
+
+        .story img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            margin-top: 10px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInStory {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .close-button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .wrapper {
+            width: 400px;
+            background: rgba(255, 182, 193, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .wrapper:hover {
+            box-shadow: 0 0 25px rgba(255, 20, 147, 0.6);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: #ff3366;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px 15px;
+            padding-right: 45px;
+            border: 2px solid rgba(255, 105, 180, 0.6);
+            border-radius: 10px;
+            background: white;
+            color: #ff3366;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus {
+            border-color: #ff66b2;
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.6);
+            outline: none;
+        }
+
+        .input-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: #ff66b2;
+        }
+
+        .button {
+            width: 100%;
+            padding: 12px;
+            background: #ff3366;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+        }
+
+        .button:hover {
+            background: #ff6699;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+        }
+
+        .profile, .question, .video-container {
+            display: none;
+            text-align: center;
+            background: rgba(255, 182, 193, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .video-container {
+            display: none;
+            text-align: center;
+            background: rgba(248,237,189,255);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            position: relative;
+        }
+        .valentine-message {
+            font-size: 32px;
+            font-weight: bold;
+            color: rgb(96, 59, 59);
+            margin-top: 20px;
+        }
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            animation: moveBackground 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        .background-animation span {
+            position: absolute;
+            font-size: 50px;
+            animation: float 5s infinite ease-in-out;
+        }  
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .background-animation span:nth-child(1) {
+            left: 5%; top: 10%;
+            animation-delay: 0s;
+        }
+
+        .background-animation span:nth-child(2) {
+            left: 30%; top: 15%;
+            animation-delay: 1s;
+        }
+
+        .background-animation span:nth-child(3) {
+            left: 60%; top: 25%;
+            animation-delay: 2s;
+        }
+
+        .background-animation span:nth-child(4) {
+            left: 80%; top: 30%;
+            animation-delay: 3s;
+        }
+
+        .background-animation span:nth-child(5) {
+            left: 10%; top: 50%;
+            animation-delay: 4s;
+        }
+
+        .background-animation span:nth-child(6) {
+            left: 45%; top: 60%;
+            animation-delay: 5s;
+        }
+
+        .background-animation span:nth-child(7) {
+            left: 70%; top: 70%;
+            animation-delay: 6s;
+        }
+
+        .background-animation span:nth-child(8) {
+            left: 20%; top: 80%;
+            animation-delay: 7s;
+        }
+
+        .background-animation span:nth-child(9) {
+            left: 55%; top: 85%;
+            animation-delay: 8s;
+        }
+
+        .background-animation span:nth-child(10) {
+            left: 75%; top: 90%;
+            animation-delay: 9s;
+        }
+
+        .valentine-message {
+            font-size: 32px;
+            font-weight: bold;
+            color: rgb(96, 59, 59);
+            margin-top: 20px;
+        }
+
+        .countdown {
+            font-size: 24px;
+            color: rgb(96, 59, 59);
+            margin-top: 10px;
+        }
+
+        .input-box-answer input {
+            width: 80%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 105, 180, 0.8);
+            background-color: white;
+            color: #ff3366;
+            font-size: 18px;
+            box-shadow: 0 0 8px rgba(255, 20, 147, 0.4);
+            transition: 0.3s;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .input-box-answer input:focus {
+            border-color: #ff66b2;
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.6);
+            outline: none;
+        }
+
+        .input-box-answer {
+            position: relative;
+        }
+
+        .input-box-answer input::placeholder {
+            color: #ff3366;
+            font-style: italic;
+        }
+
+        .input-box-answer label {
+            font-size: 16px;
+            color: white;
+            display: block;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-animation">
+        <span>🪿</span>
+        <span>🐵</span>
+        <span>💖</span>
+        <span>🌾</span>
+        <span>🌻</span>
+        <span>🪿</span>
+        <span>🐵</span>
+        <span>💖</span>
+        <span>🌾</span>
+        <span>🌻</span>
+    </div>
+
+    <div class="wrapper" id="loginForm">
+        <form onsubmit="return handleLogin(event)">
+            <h1 >🪿Login🐵</h1>
+            <div class="input-box">
+                <input type="text" id="username" placeholder="Username" required>
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" placeholder="Password" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" class="button">Login</button>
+            <div class="register-link">
+                <p>Don't have an account? <a href="#">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="profile" id="userProfile">
+        <h2>Welcome, <span id="displayName"></span>!</h2>
+        <button class="button" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="question" id="valentineQuestion">
+        <h2>Happy Valentine's Day! 💖</h2>
+        <h3> I don't know how you do it but you make me want to live forever. Wish our love will last forever. </h3>
+        <h4>ฉันไม่รู้ว่าคุณทำยังไง แต่คุณทำให้ฉันอยากมีชีวิตอยู่ไปนาน ๆ ขอให้รักของเราคงอยู่ชั่วนิรันดร์</h4>
+
+        <p> What is our anniversary date? </p>
+        <div class="input-box-answer">
+            <label for="meetingPlace">Enter your answer:</label>
+            <input type="text" id="meetingPlace" placeholder="Type your answer here" required>
+        </div>
+        <button class="button" onclick="validateAnswer()">Submit Answer</button>
+    </div>
+
+    <div class="video-container" id="videoSection">
+        <div class="background-animation">
+            <span>🦆</span>
+            <span>🐒</span>
+            <span>💖</span>
+            <span>🌳</span>
+            <span>🌻</span>
+            <span>🦆</span>
+            <span>🐒</span>
+            <span>💖</span>
+            <span>🌳</span>
+            <span>🌻</span>
+        </div>
+        <div class="valentine-message" >🌻✨Valentine's Day✨🌻</div>
+        <div class="countdown" id="countdown"></div>
+        <div class="countdown" id="countdown">☁️🤎27/07/24/🤎☁️</div>
+        <video id="valentineVideo" width="500" height="470" controls autoplay controls autoplay loop>
+            <source src="/Vidio/lek.MP4" type="video/mp4" >
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div style="text-align: center; margin-bottom: 20px;">
+    
+    <button class="read-button" onclick="window.location.href='Story.html'">📖 Read Our Love Story 📖</button>
+    <a href="Story.html" class="btn btn-love"></a>
+    <div id="nextStoriesContainer" class="next-stories-overlay">
+        <div class="next-stories-content">
+            <h3>🌟 Our Love Journey 🌟</h3>
+            <div class="stories-container" id="storiesList"></div>
+            <button class="close-button" onclick="closeNextStories()">Close</button>
+        </div>
+    </div>
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            // Validate username and password
+            if (username === "Choochat Pidpratum" && password === "270767") {
+                document.getElementById("displayName").innerText = username;
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("userProfile").style.display = "block";
+                showValentineQuestion();
+            } else {
+                alert("Incorrect username or password");
+            }
+        }
+
+        function showValentineQuestion() {
+            document.getElementById("userProfile").style.display = "none";
+            document.getElementById("valentineQuestion").style.display = "block";
+        }
+
+        function validateAnswer() {
+            let answer = document.getElementById("meetingPlace").value;
+            if (answer.toLowerCase() === "270767") {
+                showVideoSection();
+            } else {
+                alert("Incorrect answer, please try again!");
+            }
+        }
+
+        function showVideoSection() {
+            document.getElementById("valentineQuestion").style.display = "none";
+            document.getElementById("videoSection").style.display = "block";
+            updateCountdown();
+        }
+
+        function logout() {
+            document.getElementById("loginForm").style.display = "block";
+            document.getElementById("userProfile").style.display = "none";
+        }
+
+        function updateCountdown() {
+    const anniversaryDate = new Date("2024-07-27"); // วันที่ 27 กรกฎาคม 2024
+    const currentDate = new Date();
+    const timeDifference = anniversaryDate - currentDate;
+
+    // คำนวณจำนวนวัน
+    const daysLeft = Math.abs(Math.ceil(timeDifference / (1000 * 3600 * 24))); // จำนวนวันที่ผ่านมา
+
+    // คำนวณจำนวนเดือน
+    const monthsLeft = Math.abs(anniversaryDate.getMonth() - currentDate.getMonth() + 
+                              (12 * (anniversaryDate.getFullYear() - currentDate.getFullYear())));
+
+    // แสดงผลลัพธ์
+    document.getElementById("countdown").innerText = 
+        `Days since anniversary: ${daysLeft} days (${monthsLeft} months)`;
+}
+
+        // Auto start video on page load
+        window.onload = function() {
+            document.getElementById('valentineVideo').play();
+        };
+        
+        
+        function closeNextStories() {
+            document.getElementById("nextStoriesContainer").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
+</html>
