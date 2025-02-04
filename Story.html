@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Love Stories</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap" rel="stylesheet">
+   
+
+    <style>
+        
+
+        body
+               {
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+            overflow-x: hidden;
+
+        }
+        * {
+  font-family: "Anton", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+        .container { margin-top: 20px; }
+        .card {
+            background: white;
+            color: black;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .card:hover { 
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .btn-love {
+            background: #ff4d6d;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+        .btn-love:hover {
+            background: #ff1e50;
+            transform: scale(1.1);
+        }
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+
+        /* หัวใจลอย */
+        .heart {
+            position: fixed;
+            color: #ff4d6d;
+            font-size: 24px;
+            animation: floatUp 5s infinite ease-in-out;
+            opacity: 0.7;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+        }
+        .background-animation span {
+            position: absolute;
+            font-size: 50px;
+            animation: float 5s infinite ease-in-out;
+        }  
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .background-animation span:nth-child(1) {
+            left: 5%; top: 10%;
+            animation-delay: 0s;
+        }
+
+        .background-animation span:nth-child(2) {
+            left: 30%; top: 15%;
+            animation-delay: 1s;
+        }
+
+        .background-animation span:nth-child(3) {
+            left: 60%; top: 25%;
+            animation-delay: 2s;
+        }
+
+        .background-animation span:nth-child(4) {
+            left: 80%; top: 30%;
+            animation-delay: 3s;
+        }
+
+        .background-animation span:nth-child(5) {
+            left: 10%; top: 50%;
+            animation-delay: 5s;
+        }
+
+        .background-animation span:nth-child(6) {
+            left: 45%; top: 60%;
+            animation-delay: 5s;
+        }
+
+        .background-animation span:nth-child(7) {
+            left: 70%; top: 70%;
+            animation-delay: 6s;
+        }
+
+        .background-animation span:nth-child(8) {
+            left: 20%; top: 80%;
+            animation-delay: 7s;
+        }
+
+        .background-animation span:nth-child(9) {
+            left: 55%; top: 85%;
+            animation-delay: 8s;
+        }
+
+        .background-animation span:nth-child(10) {
+            left: 75%; top: 90%;
+            animation-delay: 9s;
+        }
+        
+    </style>
+</head>
+<body onload="document.body.style.opacity='1'">
+    <!-- 🎶 เพลงเล่นอัตโนมัติ -->
+    <audio id="audioPlayer" autoplay loop>
+        <source src="/sound/เพลงรัก - Three Man .mp3" type="audio/mpeg">
+    </audio>
+    
+    
+
+    <!-- 🔊 เสียงตอนกดปุ่ม -->
+    <audio id="click-sound">
+        <source src="click-sound.mp3" type="audio/mpeg">
+    </audio>
+    
+   
+    
+    <h1 class="mt-4">💖 Valentine's Love Stories 💖</h1>
+    
+    <div class="row g-4">
+        <!-- 12 การ์ดที่มีขนาดแตกต่างกัน -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card p-3 text-center" onclick="playClickSound(); scrollToStory('story1')">
+                <img src="/images/1.jpg" class="img-fluid rounded mb-3" alt="Love Story 1">
+                <h4>    </h4>
+                <p>เราเจอกันครั้งเเรกเธอจำได้ไหม </p>
+                
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card p-3 text-center" onclick="playClickSound(); scrollToStory('story2')">
+                <img src="/images/13.jpg" class="img-fluid rounded mb-3" alt="Love Story 2">
+                <h4></h4>
+                <p>ฉันชอบรูปนี้มากๆเลยน้าาา</p>
+               
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-5">
+            <div class="card p-3 text-center" onclick="playClickSound(); scrollToStory('story3')">
+                <img src="/images/3.jpg" class="img-fluid rounded mb-3" alt="Love Story 3">
+                <h4></h4>
+                <p>ไหนทำปากจู๋สิ้55555555</p>
+                
+            </div>
+        </div>
+        
+        <!-- เพิ่มอีก 9 การ์ด -->
+        <div class="col-md-4 col-lg-4">
+            <div class="card p-3 text-center">
+                <img src="/images/4.jpg" class="img-fluid rounded mb-3" alt="Love Story 4">
+                <h4></h4>
+                <p>รักแรกพบที่ไม่คาดคิด...</p>
+               
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-5">
+            <div class="card p-3 text-center">
+                <img src="/images/5.jpg" class="img-fluid rounded mb-3" alt="Love Story 5">
+                <h4></h4>
+                <p>เรื่องราวแห่งความผูกพัน...</p>
+                
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <div class="card p-3 text-center">
+                <img src="/images/6.jpg" class="img-fluid rounded mb-3" alt="Love Story 6">
+                <h4></h4>
+                <p>ดูสิพระอาทิตย์สวยเนาะเธอว่าไหม🌞🌻</p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row g-4">
+    <!-- 12 การ์ดที่มีขนาดแตกต่างกัน -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card p-3 text-center" onclick="playClickSound(); scrollToStory('story1')">
+            <img src="/images/7.jpg" class="img-fluid rounded mb-3" alt="Love Story 1">
+            <h4></h4>
+            <p>เธแคือคนเเรกเลยนะที่เราอยากจับมือด้วยตลอดเวลา</p>
+            
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card p-3 text-center" onclick="playClickSound(); scrollToStory('story2')">
+            <img src="/images/8.jpg" class="img-fluid rounded mb-3" alt="Love Story 2">
+            <h4></h4>
+            <p>ฉันชอบเวลาเธอ เผลอมากกกเลยนะ</p>
+            
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-5">
+        <div class="card p-3 text-center" onclick="playClickSound(); scrollToStory('story3')">
+            <img src="/images/9.jpg" class="img-fluid rounded mb-3" alt="Love Story 3">
+            <h4>💖</h4>
+            <p>เรื่องราวสุดพิเศษที่ไม่มีวันลืม...</p>
+           
+        </div>
+    </div>
+    
+    <!-- เพิ่มอีก 9 การ์ด -->
+    <div class="col-md-4 col-lg-4">
+        <div class="card p-3 text-center">
+            <img src="/images/10.jpg" class="img-fluid rounded mb-3" alt="Love Story 4">
+            <h4>💞</h4>
+            <p>รักแรกพบที่ไม่คาดคิด...</p>
+            
+        </div>
+    </div>
+    <div class="col-md-8 col-lg-5">
+        <div class="card p-3 text-center">
+            <img src="/images/11.jpg" class="img-fluid rounded mb-3" alt="Love Story 5">
+            <h4>💓</h4>
+            <p>กินเก่งจริงยอมมมรับบบบบเลย</p>
+           
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <div class="card p-3 text-center">
+            <img src="/images/12.jpg" class="img-fluid rounded mb-3" alt="Love Story 6">
+            <h4></h4>
+            <p>ความรักที่ฉันเลือก</p>
+            
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <div class="card p-3 text-center">
+            <img src="/images/14.JPG" class="img-fluid rounded mb-3" alt="Love Story 6">
+            <h4></h4>
+            <p>อยากกินตี๋น้อยอีกจังเลย</p>
+            
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-4">
+        <div class="card p-3 text-center">
+            <img src="/images/15.jpg" class="img-fluid rounded mb-3" alt="Love Story 4">
+            <h4>💞</h4>
+            <p>อยากนอนก่อนไปนานๆๆๆ</p>
+            
+        </div>
+    </div>
+    <div class="col-md-8 col-lg-5">
+        <div class="card p-3 text-center">
+            <img src="/images/16.jpg" class="img-fluid rounded mb-3" alt="Love Story 5">
+            <h4>💓</h4>
+            <p>ยิ้มแบบนี้ไปนานๆ นะเทอ</p>
+           
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <div class="card p-3 text-center">
+            <img src="/images/17.HEIC" class="img-fluid rounded mb-3" alt="Love Story 6">
+            <h4></h4>
+            <p>อยากซบไหลเทอมากกเลย</p>
+            
+        </div>
+    </div>
+</div>
+</div>
+    <!-- หัวใจลอย -->
+    <script>
+        
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 500);
+
+        /* 🎶 เล่นเสียงตอนคลิกปุ่ม */
+        function playClickSound() {
+            const sound = document.getElementById("click-sound");
+            sound.currentTime = 0;
+            sound.play();
+        }
+
+        /* 📜 เลื่อนไปยังเรื่องราว */
+        function scrollToStory(storyId) {
+            document.getElementById(storyId).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
